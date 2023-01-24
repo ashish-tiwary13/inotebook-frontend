@@ -83,14 +83,27 @@ const NoteState = (props) => {
 
   }
 };
+//for loading screen
 const [isLoading,setIsLoading] = useState(false);
 const Loading ={
   isLoading,
   setIsLoading
 }
+// for adding and fetching note error
+const [titleA,setTitleA] = useState("");
+const [descA,setDescA] = useState("");
+const [tagA,setTagA] = useState("");
+const NoteA={
+  titleA,
+  descA,
+  tagA,
+  setTitleA,
+  setDescA,
+  setTagA
+}
 
 return (
-  <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote ,getNotes , Loading}}>
+  <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote ,getNotes , Loading, NoteA}}>
     {props.children}
   </NoteContext.Provider>
 );

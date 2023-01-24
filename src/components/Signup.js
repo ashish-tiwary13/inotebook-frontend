@@ -1,7 +1,11 @@
-import React,{useState} from "react";
+import React,{useState ,useContext} from "react";
 import {useNavigate} from 'react-router-dom'
+import NoteContext from '../context/notes/noteContext'
 
 const Signup = () => {
+    const context = useContext(NoteContext);
+    const {setIsLoading} = context.Loading;
+
     const host=process.env.REACT_APP_BASE_URL;
     const [credentials, setCredentials] = useState({name:"",email:"",password:"",Rpassword:""})
     const [visibilityP, setVisibilityP] = useState("eye-slash")
@@ -12,6 +16,8 @@ const Signup = () => {
     let navigate = useNavigate();
     const onSubmit= async(e)=>{
         e.preventDefault();
+        navigate("/");
+        setIsLoading(true);
         const {name,email,password,Rpassword} =credentials;
         if (Rpassword===password) {
           const response = await fetch(`${host}/api/auth/createUser`, {
@@ -26,7 +32,8 @@ const Signup = () => {
           if(json.success){
             // save the auth token and redirect
             localStorage.setItem('token',json.authToken);
-            navigate("/");
+            localStorage.setItem("username", name);
+            setIsLoading(false);
           }
         }else{
           setError("Repeated password is not matching..");

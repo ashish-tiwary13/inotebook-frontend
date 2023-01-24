@@ -5,12 +5,16 @@ import logo from "../images/image.png";
 function Addnote() {
     const context = useContext(NoteContext);
     const {addNote, getNotes} = context;
+    const {setTitleA,setDescA,setTagA}= context.NoteA;
 
     const [note, setNote] = useState({title:"",description:"",tag:""})
     const [username, setUsername] = useState("")
     const handleClick=(e)=>{
         e.preventDefault();
         addNote(note.title,note.description,note.tag);
+        setTitleA(note.title);
+        setDescA(note.description);
+        setTagA(note.tag);
         getNotes();
         setNote({title:"",description:"",tag:""})
     }

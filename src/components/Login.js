@@ -34,8 +34,6 @@ const Login = () => {
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("username", json.username);
       // console.log(json.authToken);
-      // Loading(false);
-      // console.log(Loading)
       setIsLoading(false);
     } else {
       setError("Please type again with correct credentials..");
