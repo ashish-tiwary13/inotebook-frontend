@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import { useNavigate } from "react-router-dom";
-
+import NoteContext from '../context/notes/noteContext'
 
 const Login = () => {
+  const context = useContext(NoteContext);
+  const {setIsLoading} = context.Loading;
   
   const host=process.env.REACT_APP_BASE_URL;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [visibility, setVisibility] = useState("eye-slash")
   const [textOrPassword, setTextOrPassword] = useState("password")
   const [error, setError] = useState("")
+  
   let navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault();
+    navigate("/");
+    setIsLoading(true);
     const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",
       headers: {
@@ -29,7 +34,9 @@ const Login = () => {
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("username", json.username);
       // console.log(json.authToken);
-      navigate("/");
+      // Loading(false);
+      // console.log(Loading)
+      setIsLoading(false);
     } else {
       setError("Please type again with correct credentials..");
       setTimeout(() => {

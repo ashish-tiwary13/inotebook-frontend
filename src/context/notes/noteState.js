@@ -3,7 +3,7 @@ import NoteContext from "./noteContext";
 
 
 
-const NoteState = (props) => {  
+const NoteState = (props) => {
   const host=process.env.REACT_APP_BASE_URL;
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
@@ -83,9 +83,14 @@ const NoteState = (props) => {
 
   }
 };
+const [isLoading,setIsLoading] = useState(false);
+const Loading ={
+  isLoading,
+  setIsLoading
+}
 
 return (
-  <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote ,getNotes}}>
+  <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote ,getNotes , Loading}}>
     {props.children}
   </NoteContext.Provider>
 );
