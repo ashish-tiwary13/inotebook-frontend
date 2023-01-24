@@ -5,7 +5,7 @@ import {URL} from '../config/keys'
 
 const Login = () => {
   
-  const host=URL;
+  const host=URL||process.env.URL;
   console.log(host);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [visibility, setVisibility] = useState("eye-slash")
