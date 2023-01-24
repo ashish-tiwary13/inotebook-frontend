@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {URL} from '../config/keys'
 
 
 const Login = () => {
   
-  const host=URL||process.env.URL;
-  console.log(host);
+  const host=process.env.REACT_APP_BASE_URL;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [visibility, setVisibility] = useState("eye-slash")
   const [textOrPassword, setTextOrPassword] = useState("password")

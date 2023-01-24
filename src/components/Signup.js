@@ -1,9 +1,8 @@
 import React,{useState} from "react";
 import {useNavigate} from 'react-router-dom'
-import {URL} from '../config/keys'
 
 const Signup = () => {
-    const host=URL;
+    const host=process.env.REACT_APP_BASE_URL;
     const [credentials, setCredentials] = useState({name:"",email:"",password:"",Rpassword:""})
     const [visibilityP, setVisibilityP] = useState("eye-slash")
     const [textOrPasswordP, setTextOrPasswordP] = useState("password")

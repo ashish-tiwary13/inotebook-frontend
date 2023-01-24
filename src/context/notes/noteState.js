@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import NoteContext from "./noteContext";
-import {URL} from '../../config/keys'
 
 
 
-const NoteState = (props) => {
-  const host=URL;
+const NoteState = (props) => {  
+  const host=process.env.REACT_APP_BASE_URL;
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
