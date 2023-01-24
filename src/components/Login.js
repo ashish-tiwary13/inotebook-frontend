@@ -6,6 +6,7 @@ import {URL} from '../config/keys'
 const Login = () => {
   
   const host=URL;
+  console.log(host);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [visibility, setVisibility] = useState("eye-slash")
   const [textOrPassword, setTextOrPassword] = useState("password")
