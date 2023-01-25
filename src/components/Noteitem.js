@@ -5,7 +5,6 @@ function Noteitem(props) {
     const context =useContext(NoteContext);
     const{deleteNote} = context;
     const{titleA,descA,tagA} = context.NoteA;
-    console.log(titleA,descA,tagA)
     const { note ,updatenote} = props;
     return (
             <div className="container">

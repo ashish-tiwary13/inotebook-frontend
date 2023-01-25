@@ -22,7 +22,7 @@ const Loading = () => {
           <div className="line4"></div>
         </div>
       </div>
-      <h1>Redirecting</h1>
+      <h1>Loading...</h1>
     </div>
   );
 };
