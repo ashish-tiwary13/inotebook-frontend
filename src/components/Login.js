@@ -36,11 +36,11 @@ const Login = () => {
       // console.log(json.authToken);
       setIsLoading(false);
     } else {
-      setIsLoading(false);
       setError("Please type again with correct credentials..");
       setTimeout(() => {
+        setIsLoading(false);
         setError("");
-      }, 2000);
+      }, 800);
     }
   };
   const onChange = (e) => {

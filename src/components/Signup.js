@@ -17,8 +17,8 @@ const Signup = () => {
     const onSubmit= async(e)=>{
         e.preventDefault();
         navigate("/");
-        setIsLoading(true);
         const {name,email,password,Rpassword} =credentials;
+        setIsLoading(true);
         if (Rpassword===password) {
           const response = await fetch(`${host}/api/auth/createUser`, {
                 method: 'POST',
@@ -34,12 +34,25 @@ const Signup = () => {
             localStorage.setItem('token',json.authToken);
             localStorage.setItem("username", name);
             setIsLoading(false);
-          }
-        }else{
-          setError("Repeated password is not matching..");
-          setTimeout(() => {
+          }else {
+            setError("Please type again with correct credentials..");
+            setTimeout(() => {
+              setIsLoading(false);
+              setError("");
+            }, 800);}
+            if(json.msg){
+              setError(json.msg);
+              setTimeout(() => {
+                setIsLoading(false);
+                setError("");
+              }, 800);
+            }
+          }else{
+            setError("Repeated password is not matching..");
+            setTimeout(() => {
+            setIsLoading(false);
             setError("");
-          }, 2000);
+          }, 800);
         }
     };
     const onChange=(e)=>{
