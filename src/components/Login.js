@@ -5,17 +5,17 @@ import NoteContext from '../context/notes/noteContext'
 const Login = () => {
   const context = useContext(NoteContext);
   const {setIsLoading} = context.Loading;
+  const {setErr,setDisplayError} = context.Error;
   
   const host=process.env.REACT_APP_BASE_URL;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [visibility, setVisibility] = useState("eye-slash")
   const [textOrPassword, setTextOrPassword] = useState("password")
-  const [error, setError] = useState("")
   
   let navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault();
-    navigate("/");
+    // navigate("/");
     setIsLoading(true);
     const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",
@@ -33,14 +33,17 @@ const Login = () => {
       // save the auth token and redirect
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("username", json.username);
+      navigate("/");
       // console.log(json.authToken);
       setIsLoading(false);
     } else {
-      setError("Please type again with correct credentials..");
+      setErr("Please type again with correct credentials..");
+      setDisplayError("block");
       setTimeout(() => {
         setIsLoading(false);
-        setError("");
-      }, 800);
+        setErr("");
+        setDisplayError("none");
+      }, 4000);
     }
   };
   const onChange = (e) => {
@@ -119,9 +122,6 @@ const Login = () => {
                           >
                             Sign in
                           </button>
-                        </div>
-                        <div className="conatiner d-flex justify-content-center align-items-center">
-                          <div className="my-4">{error}</div>
                         </div>
                       </form>
                     </div>

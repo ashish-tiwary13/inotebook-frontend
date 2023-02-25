@@ -10,7 +10,7 @@ function Addnote() {
     const [note, setNote] = useState({title:"",description:"",tag:""})
     const [username, setUsername] = useState("")
     const handleClick=(e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         addNote(note.title,note.description,note.tag);
         setTitleA(note.title);
         setDescA(note.description);
@@ -25,7 +25,7 @@ function Addnote() {
     const [display, setDisplay] = useState("none");
     const [rotate, setRotate] = useState("");
     const handleAddNote =(e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         setDisplay(display==="none"?"block":"none");
         setRotate(rotate==="rotationForward"?"rotationReverse":"rotationForward");
     }
@@ -33,8 +33,10 @@ function Addnote() {
     //for fetching user name;
     useEffect(() => {
         const userName=localStorage.getItem('username');
-        const modifiedUserName = userName.charAt(0).toUpperCase() + userName.slice(1);
-        setUsername(modifiedUserName);
+        if(userName){
+            const modifiedUserName = userName.charAt(0).toUpperCase() + userName.slice(1);
+            setUsername(modifiedUserName);
+        }
         // eslint-disable-next-line
       }, []);
     return (
@@ -59,7 +61,7 @@ function Addnote() {
                         />
                     </div>
                     <div className="form-outline">
-                        <label className="form-label" for="textAreaExample">Description</label>
+                        <label className="form-label" htmlFor="textAreaExample">Description</label>
                         <textarea 
                             className="form-control" 
                             rows="4" 

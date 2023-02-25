@@ -90,7 +90,7 @@ function Notes() {
                   />
                 </div>
                 <div className="form-outline">
-                  <label className="form-label" for="textAreaExample">Description</label>
+                  <label className="form-label" htmlFor="textAreaExample">Description</label>
                   <textarea 
                     className="form-control" 
                     rows="4"

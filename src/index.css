@@ -110,6 +110,9 @@ code {
 	 overflow: hidden;
 	 min-height: 95vh;
 }
+.h-36{
+	height: 36px;
+}
  h1 {
 	 position: absolute;
 	 font-family: 'Open Sans';

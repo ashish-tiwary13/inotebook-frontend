@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NoteState from "./context/notes/noteState";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Error from "./components/Error";
 import React from 'react';
 
 
@@ -15,6 +16,7 @@ function App() {
     <NoteState>
       <Router>
         <NavBar />
+        <Error />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<About />} />

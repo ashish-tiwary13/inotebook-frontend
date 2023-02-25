@@ -89,6 +89,15 @@ const Loading ={
   isLoading,
   setIsLoading
 }
+
+const [Err, setErr] = useState("");
+const [displayError,setDisplayError] = useState("none")
+const Error={
+  Err,
+  setErr,
+  displayError,
+  setDisplayError
+}
 // for adding and fetching note error
 const [titleA,setTitleA] = useState("");
 const [descA,setDescA] = useState("");
@@ -103,7 +112,7 @@ const NoteA={
 }
 
 return (
-  <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote ,getNotes , Loading, NoteA}}>
+  <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote ,getNotes , Loading, NoteA, Error}}>
     {props.children}
   </NoteContext.Provider>
 );
