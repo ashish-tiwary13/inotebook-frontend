@@ -1,8 +1,9 @@
-import React,{useState,useContext,useEffect} from "react";
+import React,{useState,useContext,useEffect,useRef} from "react";
 import NoteContext from '../context/notes/noteContext'
 import logo from "../images/image.png";
 
 function Addnote() {
+    const textRef = useRef();
     const context = useContext(NoteContext);
     const {addNote, getNotes} = context;
     const {setTitleA,setDescA,setTagA}= context.NoteA;
@@ -39,6 +40,13 @@ function Addnote() {
         }
         // eslint-disable-next-line
       }, []);
+      useEffect(() => {
+        if (textRef && textRef.current) {
+          textRef.current.style.height = "0px";
+          const taHeight = textRef.current.scrollHeight;
+          textRef.current.style.height = taHeight + "px";
+        }
+      }, [note.description]);
     return (
         <div>
             <div className="container h3 d-flex justify-content-center my-4">{`Hello, ${username}`}</div>
@@ -63,8 +71,8 @@ function Addnote() {
                     <div className="form-outline">
                         <label className="form-label" htmlFor="textAreaExample">Description</label>
                         <textarea 
-                            className="form-control" 
-                            rows="4" 
+                        ref={textRef}
+                            className="form-control"
                             id="description" 
                             name="description" 
                             value={note.description} 

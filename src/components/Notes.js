@@ -5,6 +5,7 @@ import Addnote from "./Addnote";
 import Noteitem from "./Noteitem";
 
 function Notes() {
+  const textRef = useRef();
   const context = useContext(NoteContext);
   const { notes, getNotes, editNote } = context;
   let navigate =useNavigate();
@@ -40,6 +41,14 @@ function Notes() {
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    if (textRef && textRef.current) {
+      textRef.current.style.height = "0px";
+      const taHeight = textRef.current.scrollHeight;
+      textRef.current.style.height = taHeight + "px";
+    }
+  }, [note.edescription]);
   return (
     <>
       <Addnote />
@@ -92,6 +101,7 @@ function Notes() {
                 <div className="form-outline">
                   <label className="form-label" htmlFor="textAreaExample">Description</label>
                   <textarea 
+                    ref={textRef}
                     className="form-control" 
                     rows="4"
                     id="edescription"
