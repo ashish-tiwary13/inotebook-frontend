@@ -89,18 +89,16 @@ function Notes() {
                     onChange={onChange}
                   />
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
+                <div className="form-outline">
+                  <label className="form-label" for="textAreaExample">Description</label>
+                  <textarea 
+                    className="form-control" 
+                    rows="4"
                     id="edescription"
                     name="edescription"
                     value={note.edescription}
-                    onChange={onChange}
-                  />
+                    onChange={onChange}>
+                  </textarea>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">

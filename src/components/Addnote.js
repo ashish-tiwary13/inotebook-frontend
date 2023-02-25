@@ -44,7 +44,7 @@ function Addnote() {
             <div className="image mb-4"  style={{cursor:"pointer"}}><img onClick={handleAddNote} src={logo} style={{animation:`${rotate} 0.3s linear 0s 1 forwards`}} className="img" alt="images"></img></div>
             <div className="container my-4" style={{display: `${display}`}}>
                 <form>
-                    <div className="mb-3">
+                <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">
                             Title
                         </label>
@@ -58,18 +58,16 @@ function Addnote() {
                             value={note.title}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">
-                            Description
-                        </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="description"
-                            name="description"
-                            value={note.description}
-                            onChange={onChange}
-                        />
+                    <div className="form-outline">
+                        <label className="form-label" for="textAreaExample">Description</label>
+                        <textarea 
+                            className="form-control" 
+                            rows="4" 
+                            id="description" 
+                            name="description" 
+                            value={note.description} 
+                            onChange={onChange}>
+                        </textarea>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label">
@@ -84,7 +82,7 @@ function Addnote() {
                             onChange={onChange}
                         />
                     </div>
-                    <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-success" onClick={handleClick}>Add Note</button>
+                    <button disabled={note.title.length<1 || note.description.length<1} type="submit" className="btn btn-success" onClick={handleClick}>Add Note</button>
                 </form>
             </div>
         </div>
